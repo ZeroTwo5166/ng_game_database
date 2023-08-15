@@ -2,8 +2,8 @@
     <div class="game-banner">
       <img
         class="game-banner-img"
-        src="{{ game.background_image }}"
-        alt="background image"
+        [src]=" game.background_image "
+        [alt]=" game.slug"
       />
     </div>
     <div class="game-content">
@@ -30,10 +30,10 @@
               [animationDuration]="2"
             >
             </mwl-gauge>
-            <a
+            <a 
               class="game-gauge-label"
               target="_blank"
-              href="{{ game.metacritic_url }}"
+              [href]=" game.metacritic_url || metacritics"
               >Metacritic</a
             >
           </div>

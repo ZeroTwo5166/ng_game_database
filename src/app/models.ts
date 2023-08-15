@@ -13,6 +13,7 @@ export interface Game {
     ratings: Array<Rating>;
     screenshots: Array<Screenshots>;
     trailers: Array<Trailer>;
+    slug:string;
   }
   
   export interface APIResponse<T> {
@@ -40,13 +41,28 @@ export interface Game {
     title: string;
   }
   
-  interface Screenshots {
+  export interface Screenshots {
     image: string;
   }
   
-  interface Trailer {
+  export interface Trailer {
     data: {
       max: string;
     };
+  }
+
+  export interface GameImages {
+    count: number,
+    next : number,
+    previous : number,
+    results : GameScreenshots[]
+  }
+
+   export interface GameScreenshots {
+    id: number,
+    image: string,
+    width: number,
+    height: number,
+    is_deleted : boolean
   }
   

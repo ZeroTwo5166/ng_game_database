@@ -15,6 +15,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   game!: Game;
   routeSub!: Subscription;
   gameSub!: Subscription;
+  metacritics : any = "https://www.metacritic.com/game";
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,7 +25,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       this.gameId = params['id'];
-      this.getGameDetails(this.gameId);
+      this.getGameDetails(this.gameId);    
+     
     });
   }
 
@@ -32,15 +34,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.gameSub = this.httpService
       .getGameDetail(id)
       .subscribe((gameResp: Game) => {
-        this.game = gameResp;
-
+        this.game = gameResp;      
         setTimeout(() => {
           this.gameRating = this.game.metacritic;
         }, 100);
       });
-
-      console.log(this.game.metacritic_url);
-      console.log(this.game);
   }
 
   getColor(value: number): string {

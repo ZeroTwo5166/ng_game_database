@@ -36,20 +36,21 @@
       <mat-tab label="Screenshots" >
         <img
           class="game-screenshot"
-          *ngFor="let screenshot of game.screenshots"
-          src="{{ screenshot.image }}"
+          *ngFor="let screenshot of gameScreenshots"
+          src="{{ screenshot }}"
           alt="screenshot"
         />
       </mat-tab>
-      <mat-tab label="Trailers">
+      <mat-tab label="Trailers" *ngIf="gameTrailers?.length">
         <video
           class="game-trailer"
           controls
-          *ngFor="let trailer of game.trailers"
+          *ngFor="let trailer of gameTrailers"
         >
-          <source src="{{ trailer.data }}" type="video/mp4" />
+          <source src="{{ trailer.data.max }}" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </mat-tab>
     </mat-tab-group>
   </div>
+
